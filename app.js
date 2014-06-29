@@ -161,10 +161,18 @@ app.post('/student/questionnaire', function(req, res){
 	console.log('major = ' + major);
 
 	if (amount || degree || school || year || major) {
-		res.render('studentHomepage');
+		res.redirect('/student/home');
 	} else {
-		res.render('studentProfile');
+		res.redirect('/student/profile');
 	}
+})
+
+app.get('/student/home', function(req, res){
+	res.render('studentHomePage');
+})
+
+app.get('/student/profile', function(req, res){
+	res.render('studentProfile');
 })
 
 app.get('/student/profile', function(req, res){
