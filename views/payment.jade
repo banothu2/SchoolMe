@@ -1,26 +1,81 @@
-html
-  head
-  body
-    h1 Braintree Credit Card Transaction Form
-    div
-      div
-      form(action='/create_transaction', method='POST', id='braintree-payment-form')
-        p
-          label Amount
-          input(type='number', min='500', max='10000', name='amount')
-        p
-          label Card Number
-          input(type='text', size='20', autocomplete='off', data-encrypted-name='number')
-        p
-          label CVV
-          input(type='text', size='4', autocomplete='off', data-encrypted-name='cvv')
-        p
-          label Expiration (MM/YYYY)
-          input(type='text', size='2', name='month')
-          | /
-          input(type='text', size='4', name='year')
-        input#submit(type='submit')
+extend layout
+block append head
+  link(rel='stylesheet', href='/stylesheets/payment.css')
   script(src='https://js.braintreegateway.com/v1/braintree.js')
-  script(type='text/javascript').
-    var braintree = Braintree.create('MIIBCgKCAQEAvJAW++fEegfwx+CK2pIYQ9WJ1tjWH4Zlzp/UjWWpsycZr6T/5LbDoKnyo5pXXv6k2Xdm4TDXqbUpr5KGUfj+wwJPb4rzpAELP0z0kZt3wxGzd6B9F9R+8e9iTA1OTlBfsl28ziR3DRU5Fr/5Y8EFBecIPOoa9NgcR/Fa5tAJ+WsaelsLZhUcsG5KezhsfQmnyEGuzm8OeYv/kq0Bwz0EjtW3bhidnBVhi8xvFPr2pqgk9aG9YMZHHA49ncykUHXHkVgJITP/gPVDcu5MuA5cWQbzhG8/l/raAwqmgy6xSD58nxwXI1YYf+phbWErvwjv7camWe7Pd1iTZSgKKSlfpQIDAQAB');
-    braintree.onSubmitEncryptForm('braintree-payment-form');
+
+block content
+    .container
+
+    button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
+      | Launch demo modal
+
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal')
+              span(aria-hidden='true') ×
+              span.sr-only Close
+            h4#myModalLabel.modal-title Credit Card Transaction
+          .modal-body
+            div
+              div
+                form.form-horizontal(action='/create_transaction', method='POST', id='braintree-payment-form' role='form')
+                  fieldset
+                    legend Payment Information
+                    .form-group
+                      label.col-sm-3.control-label(for='pay-amount') Amount
+                      .col-sm-9
+                        input.form-control(type='number', min='500', max='10000', name='amount')
+                    .form-group
+                      label.col-sm-3.control-label(for='card-number') Name on Card
+                      .col-sm-9
+                        input.form-control(type='text', name='name')
+                    .form-group
+                      label.col-sm-3.control-label(for='pay-amount') Card Number
+                      .col-sm-9
+                        input.form-control(type='text', data-encrypted-name='number', autocomplete='off')
+                    .form-group
+                      label.col-sm-3.control-label(for='pay-amount') CVV
+                      .col-sm-9
+                        input.form-control(type='text', data-encrypted-name='cvv', autocomplete='off')
+                    .form-group
+                      label.col-sm-3.control-label(for='expiry-month') Expiration Date
+                      .col-sm-9
+                        .row
+                          .col-xs-3
+                            select#expiry-month.form-control.col-sm-2(name='month')
+                              option Month
+                              option(value='01') Jan (01)
+                              option(value='02') Feb (02)
+                              option(value='03') Mar (03)
+                              option(value='04') Apr (04)
+                              option(value='05') May (05)
+                              option(value='06') June (06)
+                              option(value='07') July (07)
+                              option(value='08') Aug (08)
+                              option(value='09') Sep (09)
+                              option(value='10') Oct (10)
+                              option(value='11') Nov (11)
+                              option(value='12') Dec (12)
+                          .col-xs-3
+                            select.form-control(name='year')
+                              option(value='13') 2013
+                              option(value='14') 2014
+                              option(value='15') 2015
+                              option(value='16') 2016
+                              option(value='17') 2017
+                              option(value='18') 2018
+                              option(value='19') 2019
+                              option(value='20') 2020
+                              option(value='21') 2021
+                              option(value='22') 2022
+                              option(value='23') 2023
+                    .form-group
+                      .col-sm-9
+                        input#submit.btn.btn-success(type='submit')
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            script(type='text/javascript').
+              var braintree = Braintree.create('MIIBCgKCAQEAvJAW++fEegfwx+CK2pIYQ9WJ1tjWH4Zlzp/UjWWpsycZr6T/5LbDoKnyo5pXXv6k2Xdm4TDXqbUpr5KGUfj+wwJPb4rzpAELP0z0kZt3wxGzd6B9F9R+8e9iTA1OTlBfsl28ziR3DRU5Fr/5Y8EFBecIPOoa9NgcR/Fa5tAJ+WsaelsLZhUcsG5KezhsfQmnyEGuzm8OeYv/kq0Bwz0EjtW3bhidnBVhi8xvFPr2pqgk9aG9YMZHHA49ncykUHXHkVgJITP/gPVDcu5MuA5cWQbzhG8/l/raAwqmgy6xSD58nxwXI1YYf+phbWErvwjv7camWe7Pd1iTZSgKKSlfpQIDAQAB');
+              braintree.onSubmitEncryptForm('braintree-payment-form');
