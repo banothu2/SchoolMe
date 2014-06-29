@@ -61,7 +61,7 @@ app.post('/login/data', function(req, res){
 	  success: function(user) {
 
 	  	var currentUser = Parse.User.current();
-	  	if(currentUser.profileType == 'student'){
+	  	if(currentUser.attributes.profileType == 'student'){
 	  		res.redirect('/student/profile');
 	  	} else {
 	  		res.redirect('/investor/profile');
@@ -136,10 +136,12 @@ app.post("/create_transaction", function (req, res) {
 });
 
 // Start
-app.get('/investor/profile', function(req, res){
+app.get('/investor/profile', express.bodyParser(), function(req, res){
 	var currentUser = Parse.User.current();
 	if (currentUser) {
-	    res.render('investorProfile')
+	    res.render('investorProfile', {
+	    	user: currentUser.attributes
+	    })
 	} else {
 	    // show the signup or login page
 	   	res.redirect('/login')
