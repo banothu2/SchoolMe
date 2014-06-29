@@ -1,0 +1,15 @@
+extends layout
+
+block append head 
+	link(rel='stylesheet', href='/stylesheets/login.css')
+
+block content
+	.container
+		.form-signin
+			.form-group
+				img.center-block.padD15.logo(src='/images/logo-sm.png')
+				input.form-control.marginD15(type='text', name='user', placeholder='username', id="userID")
+				input.form-control(type='password', name='pass', placeholder='password', id="passID")
+			button.btn.btn-lg.btn-primary.btn-block(onclick='') Submit 
+
+		
