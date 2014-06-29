@@ -9,14 +9,19 @@ block content
     link(href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', rel='stylesheet')
     link(href='/stylesheets/timeline.css', rel='stylesheet')
     link(href='/stylesheets/investorStudent.css', rel='stylesheet')
+    link(href='/stylesheets/payments.css', rel='stylesheet')
+    link(href='/stylesheets/investedStudents.css', rel='stylesheet')
+    script(src='https://code.jquery.com/ui/1.10.4/jquery-ui.min.js')
+    script(src='/javascripts/payments.js')
     script(src='/javascripts/profile.js')
-    .container(style='padding-top:60px')
+    script(src='/javascripts/investedStudents.js')
+    link(rel='stylesheet', href='/stylesheets/payment.css')
+    script(src='//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js')
+    script(src='https://js.braintreegateway.com/v1/braintree.js')
+    .container(style='margin-top:5px')
         .row
           .col-sm-10
             h1 #{user.name}
-          .col-sm-2
-            a.pull-right(href='/users')
-              img.img-circle.img-responsive(title='profile image', src='http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100')
         .row
           .col-sm-3
             ul.list-group
@@ -77,10 +82,159 @@ block content
                 a(href='#payments', data-toggle='tab') Payments
             .tab-content
               #home.tab-pane.active
-
-
-
-
+                .row
+                    .col-xs-12.col-sm-12
+                        .panel.panel-default
+                          .panel-heading.c-list
+                            span.title Potential Students
+                            ul.pull-right.c-controls
+                              li
+                                a(href='#cant-do-all-the-work-for-you')
+                                  i.glyphicon.glyphicon-plus
+                              li
+                                a.hide-search(href='#', data-command='toggle-search')
+                                  i.fa.fa-ellipsis-v
+                          .row(style='display: none;')
+                            .col-xs-12
+                              .input-group.c-search
+                                input#contact-list-search.form-control(type='text')
+                                span.input-group-btn
+                                  button.btn.btn-default(type='button')
+                                    span.glyphicon.glyphicon-search.text-muted
+                          ul#contact-list.list-group
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/men/49.jpg', alt='Scott Stevens')
+                              .col-xs-12.col-sm-9
+                                span.name Scott Stevens
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 5842 Hillcrest Rd
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (870) 288-4149
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted scott.stevens@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/men/97.jpg', alt='Seth Frazier')
+                              .col-xs-12.col-sm-9
+                                span.name Seth Frazier
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 7396 E North St
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (560) 180-4143
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted seth.frazier@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/women/90.jpg', alt='Jean Myers')
+                              .col-xs-12.col-sm-9
+                                span.name Jean Myers
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 4949 W Dallas St
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (477) 792-2822
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted jean.myers@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/men/24.jpg', alt='Todd Shelton')
+                              .col-xs-12.col-sm-9
+                                span.name Todd Shelton
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 5133 Pecan Acres Ln
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (522) 991-3367
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted todd.shelton@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/women/34.jpg', alt='Rosemary Porter')
+                              .col-xs-12.col-sm-9
+                                span.name Rosemary Porter
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 5267 Cackson St
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (497) 160-9776
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted rosemary.porter@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/women/56.jpg', alt='Debbie Schmidt')
+                              .col-xs-12.col-sm-9
+                                span.name Debbie Schmidt
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 3903 W Alexander Rd
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (867) 322-1852
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted debbie.schmidt@example.com
+                                  br
+                              .clearfix
+                            li.list-group-item
+                              .col-xs-12.col-sm-3
+                                img.img-responsive.img-circle(src='http://api.randomuser.me/portraits/women/76.jpg', alt='Glenda Patterson')
+                              .col-xs-12.col-sm-9
+                                span.name Glenda Patterson
+                                br
+                                span.glyphicon.glyphicon-map-marker.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted 5020 Poplar Dr
+                                  br
+                                span.glyphicon.glyphicon-earphone.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted (538) 718-7548
+                                  br
+                                span.fa.fa-comments.text-muted.c-info
+                                span.visible-xs
+                                  span.text-muted glenda.patterson@example.com
+                                  br
+                              .clearfix
 
 
               #messages.tab-pane
@@ -113,56 +267,124 @@ block content
                     | 2.11.2014
               #payments.tab-pane
                 hr
-                form#registrationForm.form(action='##', method='post')
-                  .form-group
-                    .col-xs-6
-                      label(for='first_name')
-                        h4 First name
-                      input#first_name.form-control(type='text', name='first_name', placeholder='first name', title='enter your first name if any.')
-                  .form-group
-                    .col-xs-6
-                      label(for='last_name')
-                        h4 Last name
-                      input#last_name.form-control(type='text', name='last_name', placeholder='last name', title='enter your last name if any.')
-                  .form-group
-                    .col-xs-6
-                      label(for='phone')
-                        h4 Phone
-                      input#phone.form-control(type='text', name='phone', placeholder='enter phone', title='enter your phone number if any.')
-                  .form-group
-                    .col-xs-6
-                      label(for='mobile')
-                        h4 Mobile
-                      input#mobile.form-control(type='text', name='mobile', placeholder='enter mobile number', title='enter your mobile number if any.')
-                  .form-group
-                    .col-xs-6
-                      label(for='email')
-                        h4 Email
-                      input#email.form-control(type='email', name='email', placeholder='you@email.com', title='enter your email.')
-                  .form-group
-                    .col-xs-6
-                      label(for='email')
-                        h4 Location
-                      input#location.form-control(type='email', placeholder='somewhere', title='enter a location')
-                  .form-group
-                    .col-xs-6
-                      label(for='password')
-                        h4 Password
-                      input#password.form-control(type='password', name='password', placeholder='password', title='enter your password.')
-                  .form-group
-                    .col-xs-6
-                      label(for='password2')
-                        h4 Verify
-                      input#password2.form-control(type='password', name='password2', placeholder='password2', title='enter your password2.')
-                  .form-group
-                    .col-xs-12
-                      br
-                      button.btn.btn-lg.btn-success(type='submit')
-                        i.glyphicon.glyphicon-ok-sign
-                        | Save
-                      button.btn.btn-lg(type='reset')
-                        i.glyphicon.glyphicon-repeat
-                        | Reset
+                .container(style='margin-top:-10px')
+                    .price-box.pull-left
+                        form.form-horizontal.form-pricing
+                          .price-slider
+                            h4.great Amount
+                            span Minimum $10 is required
+                            .col-sm-12
+                              #slider
+                          .price-slider
+                            h4.great Duration
+                            span Minimum 1 day is required
+                            .col-sm-12
+                              #slider2
+                          .price-form
+                            .form-group
+                              label.col-sm-6.control-label(for='amount') Amount ($): 
+                              span.help-text Please choose your amount
+                              .col-sm-6
+                                input#amount.form-control(type='hidden')
+                                p#amount-label.price.lead
+                                span.price .00
+                            .form-group
+                              label.col-sm-6.control-label(for='duration') Duration: 
+                              span.help-text Choose your commitment
+                              .col-sm-6
+                                input#duration.form-control(type='hidden')
+                                p#duration-label.price.lead
+                                span.price days
+                            hr.style
+                            .form-group.total
+                              label.col-sm-6.control-label(for='total')
+                                strong Total: 
+                              span.help-text (Amount * Days)
+                              .col-sm-6
+                                input#total.form-control(type='hidden')
+                                p#total-label.price.lead
+                                span.price .00
+                          .form-group
+                            .col-sm-12
+                              button.btn.btn-primary.btn-lg.btn-block(data-toggle='modal', data-target='#myModal', type='button')
+                                | Proceed
+                                span.glyphicon.glyphicon-chevron-right.pull-right(style='padding-right: 10px;')
+                          .form-group
+                            .col-sm-12
+                              img.img-responsive.payment(src='http://amirolahmad.github.io/bootstrap-pricing-slider/images/payment.png')
+
+                          #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+                            .modal-dialog
+                              .modal-content
+                                .modal-header
+                                  button.close(type='button', data-dismiss='modal')
+                                    span(aria-hidden='true') ×
+                                    span.sr-only Close
+                                  h4#myModalLabel.modal-title Credit Card Transaction
+                                .modal-body
+                                  div
+                                    div
+                                      form.form-horizontal(action='/create_transaction', method='POST', id='braintree-payment-form' role='form')
+                                        fieldset
+                                          legend Payment Information
+                                          .form-group
+                                            label.col-sm-3.control-label(for='pay-amount') Amount
+                                            .col-sm-9
+                                              input.form-control#paymentTotalBrainTree(type='number', min='0', max='10000000', name='amount')
+                                          .form-group
+                                            label.col-sm-3.control-label(for='card-number') Name on Card
+                                            .col-sm-9
+                                              input.form-control(type='text', name='name')
+                                          .form-group
+                                            label.col-sm-3.control-label(for='pay-amount') Card Number
+                                            .col-sm-9
+                                              input.form-control(type='text', data-encrypted-name='number', autocomplete='off')
+                                          .form-group
+                                            label.col-sm-3.control-label(for='pay-amount') CVV
+                                            .col-sm-9
+                                              input.form-control(type='text', data-encrypted-name='cvv', autocomplete='off')
+                                          .form-group
+                                            label.col-sm-3.control-label(for='expiry-month') Expiration Date
+                                            .col-sm-9
+                                              .row
+                                                .col-xs-3
+                                                  select#expiry-month.form-control.col-sm-2(name='month')
+                                                    option Month
+                                                    option(value='01') Jan (01)
+                                                    option(value='02') Feb (02)
+                                                    option(value='03') Mar (03)
+                                                    option(value='04') Apr (04)
+                                                    option(value='05') May (05)
+                                                    option(value='06') June (06)
+                                                    option(value='07') July (07)
+                                                    option(value='08') Aug (08)
+                                                    option(value='09') Sep (09)
+                                                    option(value='10') Oct (10)
+                                                    option(value='11') Nov (11)
+                                                    option(value='12') Dec (12)
+                                                .col-xs-3
+                                                  select.form-control(name='year')
+                                                    option(value='13') 2013
+                                                    option(value='14') 2014
+                                                    option(value='15') 2015
+                                                    option(value='16') 2016
+                                                    option(value='17') 2017
+                                                    option(value='18') 2018
+                                                    option(value='19') 2019
+                                                    option(value='20') 2020
+                                                    option(value='21') 2021
+                                                    option(value='22') 2022
+                                                    option(value='23') 2023
+                                          .form-group
+                                            .col-sm-9
+                                              input#submit.btn.btn-success(type='submit')
+                                .modal-footer
+                                  button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                  script(type='text/javascript').
+                                    var braintree = Braintree.create('MIIBCgKCAQEAvJAW++fEegfwx+CK2pIYQ9WJ1tjWH4Zlzp/UjWWpsycZr6T/5LbDoKnyo5pXXv6k2Xdm4TDXqbUpr5KGUfj+wwJPb4rzpAELP0z0kZt3wxGzd6B9F9R+8e9iTA1OTlBfsl28ziR3DRU5Fr/5Y8EFBecIPOoa9NgcR/Fa5tAJ+WsaelsLZhUcsG5KezhsfQmnyEGuzm8OeYv/kq0Bwz0EjtW3bhidnBVhi8xvFPr2pqgk9aG9YMZHHA49ncykUHXHkVgJITP/gPVDcu5MuA5cWQbzhG8/l/raAwqmgy6xSD58nxwXI1YYf+phbWErvwjv7camWe7Pd1iTZSgKKSlfpQIDAQAB');
+                                    braintree.onSubmitEncryptForm('braintree-payment-form');
+
+
 
 
 
@@ -236,9 +458,9 @@ block content
                     .timeline-panel.credits
                       ul.timeline-panel-ul
                         li
-                          span.importo Mussum ipsum cacilds
+                          span.importo Invested in Jennifer's Future
                         li
-                          span.causale Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                          span.causale Provided a $25,000 scholarship for Jennifer towards her pursuit of a degree in User Interface
                         li
                           p
                             small.text-muted
@@ -254,25 +476,25 @@ block content
                     .timeline-panel.debits
                       ul.timeline-panel-ul
                         li
-                          span.importo Mussum ipsum cacilds
+                          span.importo Increased current fund amount to $100,000
                         li
-                          span.causale Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                          span.causale Looking to invest in more students
                         li
                           p
                             small.text-muted
                               i.glyphicon.glyphicon-time
-                              | 11/09/2014
+                              | 10/06/2014
               .col-sm-6.timeline-item
                 .row
                   .col-sm-11
                     .timeline-panel.credits
                       ul.timeline-panel-ul
                         li
-                          span.importo Mussum ipsum cacilds
+                          span.importo Invested into Kevin Blanchard
                         li
-                          span.causale Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                          span.causale Provided a $5,000 invested towards Kevin's pursuit of a Chemical Engineering degree
                         li
                           p
                             small.text-muted
                               i.glyphicon.glyphicon-time
-                              | 11/09/2014
+                              | 10/06/2014
