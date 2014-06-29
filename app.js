@@ -33,6 +33,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "939n6gnvngxrspvk",
+  publicKey: "q9jbkz2y3dyfypdk",
+  privateKey: "0fd62d0c4abfb0ac40d99724aae2553f"
+});
+
+
 // Routes
 app.get('/', function(req, res){
 	res.render('login');
