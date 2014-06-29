@@ -169,12 +169,17 @@ app.post('/student/questionnaire', function(req, res){
 	}
 })
 
-app.get('/student/home', function(req, res){
-	res.render('studentHomePage');
-})
-
-app.get('/student/profile', function(req, res){
-	res.render('studentProfile');
+app.get('/student/home', express.bodyParser(), function(req, res){
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+		console.log(currentUser.attributes.email)
+	    res.render('studentHomepage', {
+	    	user: currentUser.attributes
+	    })
+	} else {
+	    // show the signup or login page
+	   	res.redirect('/login')
+	}
 })
 
 app.get('/student/profile', function(req, res){

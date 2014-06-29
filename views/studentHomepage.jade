@@ -1,0 +1,338 @@
+html(lang='en')
+head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Freelancer - A Free Start Bootstrap Theme
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet', type='text/css')
+    link(href='/stylesheets/freelancer.css', rel='stylesheet', type='text/css')
+    link(href='/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    //
+       IE8 support for HTML5 elements and media queries 
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+  body#page-top.studentHomepage
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header.page-scroll
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#page-top') My Profile
+
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.hidden
+              a(href='#page-top')
+            li.page-scroll
+              a(href='#portfolio') Portfolio
+            li.page-scroll
+              a(href='#about') About
+            li.page-scroll
+              a(href='#contact') Contact
+    header
+      .container
+        .row
+          .col-lg-12
+            img.img-responsive(src='/images/studentPP.png', alt='', width='250', height='250')
+            .intro-text
+              span.name Kathy Wang
+              hr.star-light
+              span.skills Software Engineer - Food Enthusiastic - Life Hacker
+    section#portfolio
+      .container
+        .row
+          .col-lg-12.text-center
+            h2 Portfolio
+            hr.star-primary
+        .row
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal1', data-toggle='modal', data-target='#portfolioModal1')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/valeera.png', alt='')
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal2', data-toggle='modal')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/cake.png', alt='')
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal3', data-toggle='modal')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/circus.png', alt='')
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal4', data-toggle='modal')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/game.png', alt='')
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal5', data-toggle='modal')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/safe.png', alt='')
+          .col-sm-4.portfolio-item
+            a.portfolio-link(href='#portfolioModal6', data-toggle='modal')
+              .caption
+                .caption-content
+                  i.fa.fa-search-plus.fa-3x
+              img.img-responsive(src='/images/portfolio/submarine.png', alt='')
+    section#about.success
+      .container
+        .row
+          .col-lg-12.text-center
+            h2 Personal Information
+            hr.star-light
+        .row
+          .col-lg-4.col-lg-offset-2
+            p
+              | Amount: #{user.amount} <br />
+              | Raising End Date: 12/01/2014 <br />
+              | Email: #{user.email} <br />
+          .col-lg-4
+            p
+              | Name: #{user.name} <br />
+              | School: #{user.school} <br />
+              | Degree Program: #{user.degree} <br />
+              | Graudate Year: #{user.year} <br />
+          .col-lg-8.col-lg-offset-2.text-center
+            a.btn.btn-lg.btn-outline(href='#')
+              i.fa.fa-download
+              | SchoolMe!
+    section#contact
+      .container
+        .row
+          .col-lg-12.text-center
+            h2 Contact Me
+            hr.star-primary
+        .row
+          .col-lg-8.col-lg-offset-2
+            form(role='form')
+              .row
+                .form-group.col-xs-12.floating-label-form-group
+                  label(for='name') Name
+                  input.form-control(type='text', name='name', placeholder='Name')
+              .row
+                .form-group.col-xs-12.floating-label-form-group
+                  label(for='email') Email Address
+                  input.form-control(type='email', name='email', placeholder='Email Address')
+              .row
+                .form-group.col-xs-12.floating-label-form-group
+                  label(for='message') Message
+                  textarea.form-control(placeholder='Message', rows='5')
+              br
+              .row
+                .form-group.col-xs-12
+                  button.btn.btn-lg.btn-success(type='submit') Send
+      .footer-below
+        .container
+          .row
+            .col-lg-12
+              | Copyright © 2014 - SchoolMe
+    .scroll-top.page-scroll.visible-xs.visble-sm
+      a.btn.btn-primary(href='#page-top')
+        i.fa.fa-chevron-up
+    //
+       Portfolio Modals 
+    #portfolioModal1.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+                h2 Valeera Translation
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/valeera.png', alt='')
+                p
+                  | Customized Translation for Better Reading <br />
+                  | <br />
+                  | 本extension可以自动根据您的词汇量将网页上您不认识的英文单词翻译成汉语或日语，让您的阅读更加流畅，好好享受喔亲，么么哒好评哦亲～ <br />
+                  | <br />
+                  | Customized translation for better reading. <br />
+                  | <br />
+                  | この拡張モジュールは自動的にあなたがよりスムーズに読むことできるように、あなたが中国語や日本語に英語の単語を知っていないWebページを翻訳するためにあなたの語彙に応じてすることができ、ああを楽しむ! <br />
+                  | <br />
+                  | Developers:  Kathy Wang, Eric Yu, Derek Li 
+                ul.list-inline.item-details
+                  li
+                    strong
+                      a(href='http://startbootstrap.com') MHacks
+                  li
+                    strong
+                      a(href='http://startbootstrap.com') Oct 2013
+                  li
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    #portfolioModal2.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                h2 Project Title
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/cake.png', alt='')
+                ul.list-inline.item-details
+                  li
+                    | Client:
+                    strong
+                      a(href='http://startbootstrap.com') Start Bootstrap
+                  li
+                    | Date:
+                    strong
+                      a(href='http://startbootstrap.com') April 2014
+                  li
+                    | Service:
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    #portfolioModal3.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                h2 Project Title
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/circus.png', alt='')
+                ul.list-inline.item-details
+                  li
+                    | Client:
+                    strong
+                      a(href='http://startbootstrap.com') Start Bootstrap
+                  li
+                    | Date:
+                    strong
+                      a(href='http://startbootstrap.com') April 2014
+                  li
+                    | Service:
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    #portfolioModal4.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                h2 Project Title
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/game.png', alt='')
+                p
+                  | Use this area of the page to describe your project. The icon above is part of a free icon set by
+                  a(href='https://sellfy.com/p/8Q9P/jV3VZ/') Flat Icons
+                  | . On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!
+                ul.list-inline.item-details
+                  li
+                    | Client:
+                    strong
+                      a(href='http://startbootstrap.com') Start Bootstrap
+                  li
+                    | Date:
+                    strong
+                      a(href='http://startbootstrap.com') April 2014
+                  li
+                    | Service:
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    #portfolioModal5.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                h2 Project Title
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/safe.png', alt='')
+                p
+                  | Use this area of the page to describe your project. The icon above is part of a free icon set by
+                  a(href='https://sellfy.com/p/8Q9P/jV3VZ/') Flat Icons
+                  | . On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!
+                ul.list-inline.item-details
+                  li
+                    | Client:
+                    strong
+                      a(href='http://startbootstrap.com') Start Bootstrap
+                  li
+                    | Date:
+                    strong
+                      a(href='http://startbootstrap.com') April 2014
+                  li
+                    | Service:
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    #portfolioModal6.portfolio-modal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+      .modal-content
+        .close-modal(data-dismiss='modal')
+          .lr
+            .rl
+        .container
+          .row
+            .col-lg-8.col-lg-offset-2
+              .modal-body
+                h2 Project Title
+                hr.star-primary
+                img.img-responsive.img-centered(src='/images/portfolio/submarine.png', alt='')
+                p
+                  | Use this area of the page to describe your project. The icon above is part of a free icon set by
+                  a(href='https://sellfy.com/p/8Q9P/jV3VZ/') Flat Icons
+                  | . On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!
+                ul.list-inline.item-details
+                  li
+                    | Client:
+                    strong
+                      a(href='http://startbootstrap.com') Start Bootstrap
+                  li
+                    | Date:
+                    strong
+                      a(href='http://startbootstrap.com') April 2014
+                  li
+                    | Service:
+                    strong
+                      a(href='http://startbootstrap.com') Web Development
+                button.btn.btn-default(type='button', data-dismiss='modal')
+                  i.fa.fa-times
+                  | Close
+    script(src='/javascripts/jquery-1.10.2.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
+    script(src='/javascripts/classie.js')
+    script(src='/javascripts/cbpAnimatedHeader.js')
+    script(src='/javascripts/freelancer.js')
