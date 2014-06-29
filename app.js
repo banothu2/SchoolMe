@@ -103,7 +103,8 @@ app.get('/login', function(req, res){
 	apples++;
 	res.send('apples')
 })
-
+// Start
+// End -- Delete it
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
