@@ -147,6 +147,35 @@ app.get('/investor/profile', function(req, res){
 	}
 })
 
+app.post('/student/questionnaire', function(req, res){
+	var amount = req.body.amount
+	var degree = req.body.degree
+	var school = req.body.school
+	var year = req.body.year
+	var major = req.body.major
+
+	console.log('amount = ' + amount);
+	console.log('degree = ' + degree);
+	console.log('school = ' + school);
+	console.log('year = ' + year);
+	console.log('major = ' + major);
+
+	if (amount || degree || school || year || major) {
+		res.render('studentHomepage');
+	} else {
+		res.render('studentProfile');
+	}
+})
+
+app.get('/student/profile', function(req, res){
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+		res.render('studentProfile')
+	} else {
+		res.redirect('/login')
+	}
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
