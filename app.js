@@ -42,7 +42,7 @@ var gateway = braintree.connect({
 
 Parse.initialize("gTP2cSOkEsZ6pYdyrxH1STKC8sRCmX2RO5qdMUVa", "balU43Pdd31z1MCiPFrCLvwh2Slwug1A78Ubv8rY");
 
- 
+
 // Routes
 app.get('/', function(req, res){
 	res.render('login');
