@@ -7,6 +7,9 @@ var express = require('express');
 var index = require('./routes/index');
 var http = require('http');
 var path = require('path');
+var braintree = require("braintree");
+
+
 
 var app = express();
 
@@ -34,6 +37,12 @@ if ('development' == app.get('env')) {
 app.get('/', function(req, res){
 	res.render('login');
 });
+
+app.get('/login', function(req, res){
+	var apples = 2;
+	apples++;
+	res.send('apples')
+})
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
