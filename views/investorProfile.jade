@@ -1,0 +1,73 @@
+extends layout
+block append head
+    title Bootstrap 3 layout scaffolding grid
+    meta(name='generator', content='SchoolMe')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    //if lt IE 9
+      script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
+block content
+    .jumbotron.text-center
+      .container
+        .row
+          .col.col-lg-12.col-sm-12
+            h1 Bootstrap 3 Grid
+            p See How it Stacks Up
+    .container
+      .row
+        .col-lg-12
+          .well
+            p 12 wide
+      .row
+        .col-md-4
+          .well
+            p 4 cols
+        .col-md-4
+          .well
+            p 4 cols
+        .col-md-4
+          .well
+            p 4 cols
+      .row
+        .col-lg-6.col-sm-6
+          .well
+            p 6 cols, 6 small cols
+        .col-lg-6.col-sm-6
+          .well
+            p 6 cols, 6 small cols
+      .row
+        .col-lg-4.col-sm-6
+          .well 4 cols, 6 small cols
+        .col-lg-4.col-sm-6
+          .well 4 cols, 6 small cols
+        .col-lg-4.col-sm-12
+          .well 4 cols, 12 small cols
+      .row
+        .col-md-3
+          .well
+            p 3 md cols
+        .col-md-3
+          .well
+            p 3 md cols
+        .col-md-3
+          .well
+            p 3 md cols
+        .col-md-3
+          .well
+            p 3 md cols
+      .row
+        .col-xs-3
+          .well
+            p 3 xs cols
+        .col-xs-3
+          .well
+            p 3 xs cols
+        .col-xs-3
+          .well
+            p 3 xs cols
+        .col-xs-3
+          .well
+            p 3 xs cols
+      hr
+    hr
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')

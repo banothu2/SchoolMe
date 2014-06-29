@@ -45,7 +45,7 @@ Parse.initialize("gTP2cSOkEsZ6pYdyrxH1STKC8sRCmX2RO5qdMUVa", "balU43Pdd31z1MCiPF
 
 // Routes
 app.get('/', function(req, res){
-	res.render('login');
+	res.redirect('login');
 });
 
 app.get('/login', function(req, res){
@@ -59,14 +59,15 @@ app.post('/login/data', function(req, res){
 
 	Parse.User.logIn(username, password, {
 	  success: function(user) {
+
+	  	var currentUser = Parse.User.current();
+	  	if(currentUser.profileType == 'student'){
+	  		res.redirect('/student/profile');
+	  	} else {
+	  		res.redirect('/investor/profile');
+	  	}
 	    // Do stuff after successful login.
-	    res.render('index');
-	  },
-	  error: function(user, error) {
-	    // The login failed. Check error to see why.
-	    alert("Error: " + error.code + " " + error.message);
-	  }
-	});
+	}});
 })
 
 app.get('/register', function(req, res){
@@ -77,17 +78,19 @@ app.post('/register/data', function(req, res){
 	var username = req.body.user
 	var password = req.body.pass
 	var email = req.body.email
+	var profileType = req.body.profileType
 
 	var user = new Parse.User();
 	user.set("username", username);
 	user.set("password", password);
 	user.set("email", email);
+	user.set("profileType", profileType);
 	 
 	// other fields can be set just like with Parse.Object
 	//user.set("phone", "415-392-0202");
 	 
 	user.signUp(null, {
-	  success: function(user) {
+	  success: function(user) { 
 	    // Hooray! Let them use the app now.
 	    res.render('login');
 	  },
@@ -103,8 +106,47 @@ app.get('/login', function(req, res){
 	apples++;
 	res.send('apples')
 })
+
+app.get('/payment', function(res,res){
+	res.render('payment');
+})
+
+app.post("/create_transaction", function (req, res) {
+	console.log(req.body)
+  var saleRequest = {
+    amount: req.body.amount,
+    creditCard: {
+      number: req.body.number,
+      cvv: req.body.cvv,
+      expirationMonth: req.body.month,
+      expirationYear: req.body.year
+    },
+    options: {
+      submitForSettlement: true
+    }
+  };
+
+  gateway.transaction.sale(saleRequest, function (err, result) {
+    if (result.success) {
+      res.send("<h1>Success! Transaction ID: " + result.transaction.id + "</h1>");
+    } else {
+      res.send("<h1>Error:  " + result.message + "</h1>");
+    }
+  });
+});
+
 // Start
-// End -- Delete it
+app.get('/investor/profile', function(req, res){
+	var currentUser = Parse.User.current();
+	if (currentUser) {
+	    res.render('investorProfile')
+	} else {
+	    // show the signup or login page
+	   	res.redirect('/login')
+
+	}
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

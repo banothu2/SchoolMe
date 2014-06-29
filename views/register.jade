@@ -11,7 +11,12 @@ block content
 					img.center-block.padD15.logo(src='/images/logo-sm.png')
 					input.form-control.marginD15(type='text', name='user', placeholder='username', id="userID")
 					input.form-control(type='password', name='pass', placeholder='password', id="passID")
-					input.form-control(type='text', name='email', placeholder='banothu2@illinois.edu', id="emailID")
-					button.btn.btn-lg.btn-primary.btn-block(type="submit") Register
+					input.form-control(style='margin-top:10px', type='text', name='email', placeholder='banothu2@illinois.edu', id="emailID")
+					select.form-control(style='margin-bottom:10px', name='profileType')
+						option(value='student') Student
+						option(value='investor') Investor
+					button.btn.btn-lg.btn-info.btn-block(type="submit") Register
+				button.btn.btn-lg.btn-success.btn-block(style='margin-top:20px;', type="button", onclick="window.location.href='/Login'") Login
+
 
 		
